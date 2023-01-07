@@ -6,6 +6,10 @@ const resultInput = document.getElementById(`result`)
 
 const allawedKeys = [ "(" , ")" ,"/","*","-","+","9","8","7","6","5","4","3","2","1","0",".","%"," " ]
 
+document.getElementById(`clear`).addEventListener(`click`,function(clear){
+        input.value = ""
+        input.focus()
+})
 document.querySelectorAll(".charKey").forEach(function (charKeyBtn) {//aqui o callback e passado para uma variavel  usando o atributo dataset utilizando o segundo valor do atributo seu value
         charKeyBtn.addEventListener("click", function () {
           const value = charKeyBtn.dataset.value   // Aqui o value e concatenado com a variavel criada acima
@@ -26,6 +30,10 @@ input.addEventListener(`keydown`,function(ev){
                 calculate()
         }
 })
+
+
+document.getElementById(`equal`).addEventListener(`click`,calculate)
+
 function calculate(){
-        console.log(calculate)
+        const resultado = eval(input)
 }
