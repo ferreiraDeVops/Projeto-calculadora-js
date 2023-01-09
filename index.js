@@ -46,12 +46,16 @@ document.querySelectorAll(`.charKey`).forEach(function(charKeyBtn){// Selecionar
         })
 })
 
-
+// ADICIONANDO FUNCIONALIDADE DO BOTÃO = 
 document.getElementById(`equal`).addEventListener(`click`, calculate)
 
+// ADICIONANDO A FUNÇÃO DE CALCULO USANDO EVAL()
 function calculate(){
-        const result =eval(input.value)
+        resultInput.value = "ERROR"     
+        resultInput.classList.add(`error`)
+        const result = eval(input.value)
         resultInput.value = result
+        resultInput.classList.remove(`error`)
 }
 
 
@@ -72,6 +76,19 @@ document.getElementById(`themeSwitcher`).addEventListener(`click`,function(){
                 root.style.setProperty( `--font-color`, `#f1f5f9`)
                 root.style.setProperty(`--primary-color`, `#4dff91`)
                 main.dataset.theme = `dark`
+        }
+})
+
+
+document.getElementById(`copyToClipboard`).addEventListener(`click`,function(ev){
+        const button = ev.currentTarget
+        if(button.innerText === `Copy`){
+                button.innerText = `Copied!`
+                button.classList.add(`success`)
+                navigator.clipboard.writeText(resultInput.value)
+        }else{
+                button.innerText = `Copy`
+                button.classList.remove(`success`)
         }
 })
 
